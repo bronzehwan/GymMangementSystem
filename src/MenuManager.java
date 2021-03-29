@@ -17,19 +17,51 @@ public class MenuManager {
 			num = input.nextInt();
 			switch(num) {
 			case 1:
-				System.out.print("Member ID: ");
-				int memberid = input.nextInt();
-				System.out.print("Member name: ");
-				String membername = input.next();
+				addMember();
 				break;
 			case 2:
+				deleteMember();
+				break;
 			case 3:
+				editMember();
+				break;
 			case 4:
-				System.out.print("Member ID: ");
-				int memberid2 = input.nextInt();
+				viewMember();
+				break;
 			}
 		}
+		
 	
+	}
+	
+	public static void addMember() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Member ID: ");
+		int memberid = input.nextInt();
+		System.out.print("Member name: ");
+		String membername = input.next();
+		System.out.print("Member's phonenumber: ");
+		String memberphone = input.next();
+		System.out.print("3´ë Áß·®: ");
+		int weight = input.nextInt();
+	}
+	
+	public static void deleteMember() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Member ID: ");
+		int memberid = input.nextInt();
+	}
+	
+	public static void editMember() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Member ID: ");
+		int memberid = input.nextInt();
+	}
+	
+	public static void viewMember() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Member ID: ");
+		int memberid = input.nextInt();
 	}
 
 }
