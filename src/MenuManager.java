@@ -12,7 +12,7 @@ public class MenuManager {
 			System.out.println("1. Add Member");
 			System.out.println("2. Delete Member");
 			System.out.println("3. Edit Member");
-			System.out.println("4. View Member");
+			System.out.println("4. View Members");
 			System.out.println("5. Exit");
 			System.out.println("Select one number between 1-5 : ");
 			num = input.nextInt();
@@ -27,7 +27,7 @@ public class MenuManager {
 				memberManager.editMember();
 				break;
 			case 4:
-				memberManager.viewMember();
+				memberManager.viewMembers();
 				break;
 			}
 		}

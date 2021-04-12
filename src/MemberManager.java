@@ -1,51 +1,121 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import Member.AdvancedMember;
+import Member.Member;
+
 public class MemberManager {
-	Member member;
+	ArrayList<Member> members = new ArrayList<Member>();
 	Scanner input;
 	MemberManager(Scanner input){
 		this.input = input;
 	}
 	
 	public void addMember() {
-		member = new Member();
-		System.out.print("Member ID: ");
-		member.id = input.nextInt();
-		System.out.print("Member name: ");
-		member.name = input.next();
-		System.out.print("Member's phonenumber: ");
-		member.phone = input.next();
-		System.out.print("3´ë Áß·®: ");
-		member.weight = input.nextInt();
+		int kind = 0;
+		Member member;
+		while (kind != 1 && kind != 2) {
+			System.out.println("1 for Master");
+			System.out.println("2 for Advanced");
+			System.out.println("Select num for Member Kind between 1 - 2: ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				member = new Member();
+				member.getUserInput(input);
+				members.add(member);
+				break;
+			}
+			else if (kind == 2) {
+				member = new AdvancedMember();
+				member.getUserInput(input);
+				members.add(member);
+				break;
+			}
+			else {
+				System.out.println("Select num for Member Kind between 1 - 2: ");
+			}
+			
+		}
+		
 	}
 	
 	public void deleteMember() {
 		System.out.print("Member ID: ");
 		int memberid = input.nextInt();
-		if (member == null) {
+		int index = -1;
+		for (int i = 0; i<members.size(); i++) {
+			if (members.get(i).getId() == memberid) {
+				index = i;
+				break;
+			}
+		}
+		
+		if (index >= 0) {
+			members.remove(index);
+			System.out.println("the member " + memberid +"is deleted");
+		}
+		else {
 			System.out.println("the member has not been registered");
 			return;
 		}
-		if (member.id == memberid) {
-			member = null;
-			System.out.println("the member is deleted");
-		}
+		
 	}
 	
 	public void editMember() {
 		System.out.print("Member ID: ");
 		int memberid = input.nextInt();
-		if (member.id == memberid) {
-			System.out.println("the member to be edited is "+ memberid);
+		for (int i = 0; i<members.size(); i++) {
+			Member member = members.get(i);
+			if (member.getId() == memberid) {
+				int num = -1;
+				while (num != 5) {
+					System.out.println("** Member Info Edit Menu **");
+					System.out.println(" 1. Edit Id");
+					System.out.println(" 2. Edit Name");
+					System.out.println(" 3. Edit Phone");
+					System.out.println(" 4. Edit Weight");
+					System.out.println(" 5. Exit");
+					System.out.println("Select one number between 1-5");
+					num = input.nextInt();
+					if (num == 1) {
+						System.out.println("Member ID: ");
+						int id = input.nextInt();
+						member.setId(id);
+					}
+					else if (num == 2) {
+						System.out.println("Member name: ");
+						String name = input.next();
+						member.setName(name);
+					}
+					else if (num == 3) {
+						System.out.println("Member phone: ");
+						String phone = input.next();
+						member.setPhone(phone);
+					}
+					else if (num == 4) {
+						System.out.println("Member weight: ");
+						int weight = input.nextInt();
+						member.setWeight(weight);
+					}
+					else {
+						continue;
+					}
+				}
+				break;
+			}
 		}
+		
+			
 	}
 	
-	public void viewMember() {
-		System.out.print("Member ID: ");
-		int memberid = input.nextInt();
-		if (member.id == memberid) {
-			member.printInfo();
+	public void viewMembers() {
+//		System.out.print("Member ID: ");
+//		int memberid = input.nextInt();
+		System.out.println("# of registered members: " + members.size());
+		for (int i = 0; i<members.size(); i++) {
+			members.get(i).printInfo();
 		}
+		
 	}
 
 }
