@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class AdvancedMember extends Member {
 	
+	public AdvancedMember(MemberKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Member ID: ");
 		int id = input.nextInt();
@@ -35,7 +39,5 @@ public class AdvancedMember extends Member {
 		System.out.print("3´ë Áß·®: ");
 		int weight = input.nextInt();
 		this.setWeight(weight);
-	}
-	
-
+	}	
 }

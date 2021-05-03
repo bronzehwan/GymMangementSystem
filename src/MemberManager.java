@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Member.AdvancedMember;
+import Member.BeginnerMember;
 import Member.Member;
+import Member.MemberKind;
 
 public class MemberManager {
 	ArrayList<Member> members = new ArrayList<Member>();
@@ -17,22 +19,29 @@ public class MemberManager {
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Master");
 			System.out.println("2 for Advanced");
-			System.out.println("Select num for Member Kind between 1 - 2: ");
+			System.out.println("3 for Beginner");
+			System.out.println("Select num 1, 2, or 3 for Member Kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				member = new Member();
+				member = new Member(MemberKind.Master);
 				member.getUserInput(input);
 				members.add(member);
 				break;
 			}
 			else if (kind == 2) {
-				member = new AdvancedMember();
+				member = new AdvancedMember(MemberKind.Advanced);
+				member.getUserInput(input);
+				members.add(member);
+				break;
+			}
+			else if (kind == 3) {
+				member = new BeginnerMember(MemberKind.Beginner);
 				member.getUserInput(input);
 				members.add(member);
 				break;
 			}
 			else {
-				System.out.println("Select num for Member Kind between 1 - 2: ");
+				System.out.println("Select num 1, 2, or 3 for Member Kind: ");
 			}
 			
 		}

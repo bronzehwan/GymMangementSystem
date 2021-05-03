@@ -12,9 +12,21 @@ public class Member {
 	public Member() {
 	}
 	
+	public Member(MemberKind kind) {
+		this.kind = kind;
+	}
+	
 	public Member(String name, int id) {
 		this.name = name;
 		this.id = id;
+	}
+	
+	public Member(MemberKind kind, String name, int id, String phone, int weight) {
+		this.kind = kind;
+		this.name = name;
+		this.id = id;
+		this.phone = phone;
+		this.weight = weight;
 	}
 	
 	public Member(String name, int id, String phone, int weight) {
@@ -64,8 +76,25 @@ public class Member {
 		this.weight = weight;
 	}
 	
+	
 	public void printInfo() {
-		System.out.println("name: "+ name + " id: "+ id + " phone: "+ phone + " weight: "+ weight);
+		String skind = "none";
+		switch(this.kind) {
+		case Master:
+			skind = "Mas.";
+			break;
+		case Advanced:
+			skind = "Adv.";
+			break;
+		case Middle:
+			skind = "Mid.";
+			break;
+		case Beginner:
+			skind = "Beg.";
+			break;
+		default:
+		}
+		System.out.println("kind: "+ skind + "name: "+ name + " id: "+ id + " phone: "+ phone + " weight: "+ weight);
 	}
 	
 	public void getUserInput(Scanner input) {
