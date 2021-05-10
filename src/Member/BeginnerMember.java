@@ -2,7 +2,7 @@ package Member;
 
 import java.util.Scanner;
 
-public class BeginnerMember extends Member {
+public class BeginnerMember extends Member implements MemberInput {
 	
 	protected String homephone;
 	protected int hopingweight;

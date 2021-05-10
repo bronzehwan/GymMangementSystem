@@ -3,11 +3,13 @@ import java.util.Scanner;
 
 import Member.AdvancedMember;
 import Member.BeginnerMember;
+import Member.MasterMember;
 import Member.Member;
+import Member.MemberInput;
 import Member.MemberKind;
 
 public class MemberManager {
-	ArrayList<Member> members = new ArrayList<Member>();
+	ArrayList<MemberInput> members = new ArrayList<MemberInput>();
 	Scanner input;
 	MemberManager(Scanner input){
 		this.input = input;
@@ -15,7 +17,7 @@ public class MemberManager {
 	
 	public void addMember() {
 		int kind = 0;
-		Member member;
+		MemberInput memberInput;
 		while (kind != 1 && kind != 2) {
 			System.out.println("1 for Master");
 			System.out.println("2 for Advanced");
@@ -23,21 +25,21 @@ public class MemberManager {
 			System.out.println("Select num 1, 2, or 3 for Member Kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				member = new Member(MemberKind.Master);
-				member.getUserInput(input);
-				members.add(member);
+				memberInput = new MasterMember(MemberKind.Master);
+				memberInput.getUserInput(input);
+				members.add(memberInput);
 				break;
 			}
 			else if (kind == 2) {
-				member = new AdvancedMember(MemberKind.Advanced);
-				member.getUserInput(input);
-				members.add(member);
+				memberInput = new AdvancedMember(MemberKind.Advanced);
+				memberInput.getUserInput(input);
+				members.add(memberInput);
 				break;
 			}
 			else if (kind == 3) {
-				member = new BeginnerMember(MemberKind.Beginner);
-				member.getUserInput(input);
-				members.add(member);
+				memberInput = new BeginnerMember(MemberKind.Beginner);
+				memberInput.getUserInput(input);
+				members.add(memberInput);
 				break;
 			}
 			else {
@@ -74,8 +76,8 @@ public class MemberManager {
 		System.out.print("Member ID: ");
 		int memberid = input.nextInt();
 		for (int i = 0; i<members.size(); i++) {
-			Member member = members.get(i);
-			if (member.getId() == memberid) {
+			MemberInput memberInput = members.get(i);
+			if (memberInput.getId() == memberid) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Member Info Edit Menu **");
@@ -89,22 +91,22 @@ public class MemberManager {
 					if (num == 1) {
 						System.out.println("Member ID: ");
 						int id = input.nextInt();
-						member.setId(id);
+						memberInput.setId(id);
 					}
 					else if (num == 2) {
 						System.out.println("Member name: ");
 						String name = input.next();
-						member.setName(name);
+						memberInput.setName(name);
 					}
 					else if (num == 3) {
 						System.out.println("Member phone: ");
 						String phone = input.next();
-						member.setPhone(phone);
+						memberInput.setPhone(phone);
 					}
 					else if (num == 4) {
 						System.out.println("Member weight: ");
 						int weight = input.nextInt();
-						member.setWeight(weight);
+						memberInput.setWeight(weight);
 					}
 					else {
 						continue;
