@@ -2,7 +2,9 @@ package Member;
 
 import java.util.Scanner;
 
-public abstract class Member {
+import exception.PhoneFormatException;
+
+public abstract class Member implements MemberInput {
 	protected MemberKind kind = MemberKind.Master;
 	protected String name;
 	protected int id;
@@ -64,7 +66,10 @@ public abstract class Member {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(String phone) throws PhoneFormatException {
+		if (!phone.contains("010") && !phone.equals("")) {
+			throw new PhoneFormatException();
+		}
 		this.phone = phone;
 	}
 
@@ -79,6 +84,56 @@ public abstract class Member {
 	
 	public abstract void printInfo();
 	
+	public void setMemberID(Scanner input) {
+		System.out.println("Member ID: ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
 	
+	public void setMemberName(Scanner input) {
+		System.out.println("Member name: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setMemberPhone(Scanner input) {
+		String phone = "";
+		while (!phone.contains("010")) {
+			System.out.println("Member phone: ");
+			phone = input.next();
+			try {
+				this.setPhone(phone);
+			} catch (PhoneFormatException e) {
+				System.out.println("Incorrect Phone Format. put the phone number that contains 010");
+			}
+		}
+		
+	}
+	
+	public void setMemberWeight(Scanner input) {
+		System.out.println("Member weight: ");
+		int weight = input.nextInt();
+		this.setWeight(weight);
+	}
+	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Master:
+			skind = "Mas.";
+			break;
+		case Advanced:
+			skind = "Adv.";
+			break;
+		case Middle:
+			skind = "Mid.";
+			break;
+		case Beginner:
+			skind = "Beg.";
+			break;
+		default:
+		}
+		return skind;
+	}
 
 }
