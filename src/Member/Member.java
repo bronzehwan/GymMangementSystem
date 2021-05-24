@@ -1,10 +1,15 @@
 package Member;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.PhoneFormatException;
 
-public abstract class Member implements MemberInput {
+public abstract class Member implements MemberInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6430282565120251739L;
 	protected MemberKind kind = MemberKind.Master;
 	protected String name;
 	protected int id;

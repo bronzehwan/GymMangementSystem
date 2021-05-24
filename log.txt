@@ -1,0 +1,4 @@
+5월 25, 2021 3:47:34 오전 log.EventLogger log
+INFO: add a member
+5월 25, 2021 3:47:41 오전 log.EventLogger log
+INFO: edit a list of member
