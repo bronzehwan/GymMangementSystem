@@ -1,4 +1,6 @@
+package manager;
 import java.io.Serializable;
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -137,7 +139,14 @@ public class MemberManager implements Serializable{
 		
 	}
 	
+	public int size() {
+		return members.size();
+	}
 	
+	public MemberInput get(int index) {
+		return members.get(index);
+	}
+
 	
 	
 	

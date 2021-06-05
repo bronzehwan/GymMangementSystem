@@ -10,9 +10,15 @@ public interface MemberInput {
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getPhone();
+	
 	public void setPhone(String phone) throws PhoneFormatException;
+	
+	public int getWeight();
 	
 	public void setWeight(int weight);
 	
