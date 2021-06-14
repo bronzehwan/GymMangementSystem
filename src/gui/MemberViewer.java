@@ -17,6 +17,37 @@ public class MemberViewer extends JPanel {
 	
 	MemberManager membermanager;
 
+	public MemberManager getMembermanager() {
+		return membermanager;
+	}
+
+	public void setMembermanager(MemberManager membermanager) {
+		this.membermanager = membermanager;
+		this.removeAll();
+		
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Id");
+		model.addColumn("Name");
+		model.addColumn("Phone");
+		model.addColumn("Weight");
+		
+		for(int i = 0; i<membermanager.size(); i++) {
+			Vector row = new Vector();
+			MemberInput mi = membermanager.get(i);
+			row.add(mi.getId());
+			row.add(mi.getName());
+			row.add(mi.getPhone());
+			row.add(mi.getWeight());
+			model.addRow(row);
+		}
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+	}
+
 	public MemberViewer(WindowFrame frame, MemberManager membermanager) {
 		this.frame = frame;
 		this.membermanager = membermanager;

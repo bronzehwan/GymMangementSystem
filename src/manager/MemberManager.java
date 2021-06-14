@@ -22,6 +22,16 @@ public class MemberManager implements Serializable{
 		this.input = input;
 	}
 	
+	public void addMember(String id, String name, String phone, String weight) {
+		MemberInput memberInput = new MasterMember(MemberKind.Master);
+		memberInput.getUserInput(input);
+		members.add(memberInput);
+	}
+	
+	public void addMember(MemberInput memberInput) {
+		members.add(memberInput);
+	}
+	
 	public void addMember() {
 		int kind = 0;
 		MemberInput memberInput;
